@@ -1,5 +1,7 @@
 # ATTA WKHTMLTOX API
 
+![](https://travis-ci.org/Attainia/atta-wkhtmltox-api.svg?branch=master)
+
 WKHTMLTOX API is an http wrapper api round the [wkhtmltopdf](https://wkhtmltopdf.org/) cli tool.
 
 ## Build
