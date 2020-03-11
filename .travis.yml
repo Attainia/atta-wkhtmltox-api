@@ -7,7 +7,7 @@ jobs:
   include:
     - stage: test
       script:
-        - docker build -f Dockerfile.test -t attainia/wkhtmltox-api-test .
+        - docker build -f ./Dockerfile.test -t attainia/wkhtmltox-api-test .
         - docker run wkhtmltox-api-test go test -v wkhtmltox-api/cmd
         - docker run wkhtmltox-api-test go test -v wkhtmltox-api/internal
 
