@@ -1,4 +1,4 @@
-language: go
+language: generic
 
 services:
   - docker
@@ -6,14 +6,16 @@ services:
 jobs:
   include:
     - stage: test
-      script: docker build -f Dockerfile.test -t attainia/wkhtmltox-api-test . \
-              && docker run wkhtmltox-api-test go test -v wkhtmltox-api/cmd \
-              && docker run wkhtmltox-api-test go test -v wkhtmltox-api/internal
+      script:
+        - docker build -f ./Dockerfile.test -t attainia/atta-wkhtmltox-api-test .
+        - docker run attainia/atta-wkhtmltox-api-test go test -v wkhtmltox-api/cmd
+        - docker run attainia/atta-wkhtmltox-api-test go test -v wkhtmltox-api/internal
 
 deploy:
   provider: script
-  script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin \
-          && docker build -t docker build -t attainia/wkhtmltox-api . \
-          && docker push attainia/wkhtmltox-api
+  script: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin \
+          && docker build -t attainia/atta-wkhtmltox-api . \
+          && docker push attainia/atta-wkhtmltox-api
   on:
     branch: master
