@@ -1,11 +1,11 @@
 package main
 
 import (
+	"atta-wkhtmltox-api/internal"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
-	"wkhtmltox-api/internal"
 )
 
 func main() {
