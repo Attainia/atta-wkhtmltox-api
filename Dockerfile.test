@@ -1,5 +1,5 @@
 FROM golang:1.11-alpine3.8
-WORKDIR /go/src/wkhtmltox-api
+WORKDIR /go/src/atta-wkhtmltox-api
 RUN apk add --no-cache curl git gcc musl-dev \
     && curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 COPY . .
