@@ -11,11 +11,13 @@ import (
 func main() {
 	config := internal.GetConfig()
 	wkhtmltoxView := internal.WkhtmltoxView{}
+	statusView := internal.StatusView{}
 
 	// Ensure the working directory exists
 	_ = os.MkdirAll(config.WorkDir, os.ModePerm)
 
 	http.HandleFunc("/", wkhtmltoxView.Handle)
+	http.HandleFunc("/status", statusView.Handle)
 
 	log.Printf("Listening on %s:%d", config.Host, config.Port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%d", config.Host, config.Port), logRequest(http.DefaultServeMux)))
