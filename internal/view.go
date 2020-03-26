@@ -79,11 +79,12 @@ func (v *WkhtmltoxView) convertContent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//convert to pdf
-	var args = []string{}
+	var args = []string{"-a"}
 	args = append(args, config.WKHTMLTOPDFPath)
 	args = append(args, flags...)
 	args = append(args, htmlPath, outPath)
-	if err := exec.Command("xvfb-run", args...).Run(); err != nil {
+	if out, err := exec.Command("xvfb-run", args...).CombinedOutput(); err != nil {
+		println(string(out))
 		http.Error(w, "error processing content.", http.StatusInternalServerError)
 		return
 	}
