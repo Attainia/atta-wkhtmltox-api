@@ -102,6 +102,46 @@ func (o *PDFOptions) GetPageSizeFlag() []string {
 	return []string{"--page-size", "A4"}
 }
 
+func (o *PDFOptions) GetTopMarginFlag() []string {
+	if topMargin, exists := o.options["top-margin"]; exists {
+		if match, _ := regexp.MatchString("^[0-9]*$", topMargin); match {
+			return []string{"-T", topMargin + "mm"}
+		}
+	}
+
+	return []string{}
+}
+
+func (o *PDFOptions) GetBottomMarginFlag() []string {
+	if bottomMargin, exists := o.options["top-margin"]; exists {
+		if match, _ := regexp.MatchString("^[0-9]*$", bottomMargin); match {
+			return []string{"-B", bottomMargin + "mm"}
+		}
+	}
+
+	return []string{}
+}
+
+func (o *PDFOptions) GetRightMarginFlag() []string {
+	if rightMargin, exists := o.options["top-margin"]; exists {
+		if match, _ := regexp.MatchString("^[0-9]*$", rightMargin); match {
+			return []string{"-R", rightMargin + "mm"}
+		}
+	}
+
+	return []string{}
+}
+
+func (o *PDFOptions) GetLeftMarginFlag() []string {
+	if leftMargin, exists := o.options["top-margin"]; exists {
+		if match, _ := regexp.MatchString("^[0-9]*$", leftMargin); match {
+			return []string{"-L", leftMargin + "mm"}
+		}
+	}
+
+	return []string{}
+}
+
 func PDFOptionsFromHeader(header string) (*PDFOptions, error) {
 	opts, err := OptionsFromHeader(header)
 	if err != nil {

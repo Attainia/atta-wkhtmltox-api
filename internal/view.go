@@ -55,6 +55,10 @@ func (v *WkhtmltoxView) convertContent(w http.ResponseWriter, r *http.Request) {
 		flags = append(flags, opts.GetLowQualityFlag()...)
 		flags = append(flags, opts.GetOrientationFlag()...)
 		flags = append(flags, opts.GetPageSizeFlag()...)
+		flags = append(flags, opts.GetTopMarginFlag()...)
+		flags = append(flags, opts.GetBottomMarginFlag()...)
+		flags = append(flags, opts.GetRightMarginFlag()...)
+		flags = append(flags, opts.GetLeftMarginFlag()...)
 	} else {
 		http.Error(w, "Accept header is not a supported format.", http.StatusBadRequest)
 		return
