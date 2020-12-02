@@ -113,7 +113,7 @@ func (o *PDFOptions) GetTopMarginFlag() []string {
 }
 
 func (o *PDFOptions) GetBottomMarginFlag() []string {
-	if bottomMargin, exists := o.options["top-margin"]; exists {
+	if bottomMargin, exists := o.options["bottom-margin"]; exists {
 		if match, _ := regexp.MatchString("^[0-9]*$", bottomMargin); match {
 			return []string{"-B", bottomMargin + "mm"}
 		}
@@ -123,7 +123,7 @@ func (o *PDFOptions) GetBottomMarginFlag() []string {
 }
 
 func (o *PDFOptions) GetRightMarginFlag() []string {
-	if rightMargin, exists := o.options["top-margin"]; exists {
+	if rightMargin, exists := o.options["right-margin"]; exists {
 		if match, _ := regexp.MatchString("^[0-9]*$", rightMargin); match {
 			return []string{"-R", rightMargin + "mm"}
 		}
@@ -133,7 +133,7 @@ func (o *PDFOptions) GetRightMarginFlag() []string {
 }
 
 func (o *PDFOptions) GetLeftMarginFlag() []string {
-	if leftMargin, exists := o.options["top-margin"]; exists {
+	if leftMargin, exists := o.options["left-margin"]; exists {
 		if match, _ := regexp.MatchString("^[0-9]*$", leftMargin); match {
 			return []string{"-L", leftMargin + "mm"}
 		}
